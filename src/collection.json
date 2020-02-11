@@ -1,0 +1,15 @@
+{
+  "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "cap-angular-schematic-bootstrap": {
+      "description": "A CAP Angular bootstrap Schematic",
+      "factory": "./cap-angular-schematic-bootstrap/index#schematicsBootstrap",
+      "schema": "./cap-angular-schematic-bootstrap/schema.json"
+    },
+    "ng-add": {
+      "description": "Add schematic",
+      "factory": "./ng-add/index",
+      "schema": "./cap-angular-schematic-bootstrap/schema.json"
+    }
+  }
+}

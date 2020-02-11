@@ -1,0 +1,36 @@
+{
+  "name": "cap-angular-schematic-bootstrap",
+  "version": "0.0.3",
+  "description": "Bootstrap integration schematic",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && jasmine src/**/*_spec.js",
+    "clean": "rm -rf dist",
+    "build-package": "rm -rf dist && tsc && node ./create_package.js && cp src/collection.json dist"
+  },
+  "keywords": [
+    "schematics",
+    "responsive",
+    "bootstrap"
+  ],
+  "author": {
+    "name": "Software Allies",
+    "url": "https://softwareallies.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/software-allies/cap-angular-schematic-bootstrap"
+  },
+  "schematics": "./src/collection.json",
+  "devDependencies": {
+    "@angular-devkit/core": "^7.3.9",
+    "@angular-devkit/schematics": "^7.3.9",
+    "@types/jasmine": "^3.0.0",
+    "@types/node": "^8.0.31",
+    "typescript": "^3.2.4"
+  },
+  "dependencies": {
+    "@schematics/angular": "^8.3.23"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "CAP Angular Schematic Bootstrap",
+  "title": "CAP Angular Schematic Bootstrap",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "string",
+      "description": "Bootstrap version",
+      "x-prompt": "What is the Bootstrap version that you want to install?",
+      "default": "4.0.0",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      }
+    }
+  },
+  "required": ["version"]
+}
