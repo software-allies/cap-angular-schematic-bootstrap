@@ -1,2 +1,2 @@
 # schematics
-ng-bootstrap schematics collection for angular-cli
+cap-angular-schematic-bootstrap
