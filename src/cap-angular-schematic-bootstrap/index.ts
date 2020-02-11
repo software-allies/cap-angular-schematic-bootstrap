@@ -27,7 +27,7 @@ const typesJquery = '3.3.29';
 function addBootstrapToPackageJson(options: BootstrapSchema): Rule {
   return (host: Tree) => {
     addPackageToPackageJson(host, 'dependencies', 'bootstrap', `^${options.version}`);
-    addPackageToPackageJson(host, 'dev-dependencies', '@types/jquery', `^${typesJquery}`);
+    addPackageToPackageJson(host, 'devDependencies', '@types/jquery', `^${typesJquery}`);
     return host;
   };
 }
