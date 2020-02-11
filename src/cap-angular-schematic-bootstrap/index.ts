@@ -57,12 +57,12 @@ function addJqueryPluginToWebpackConfig(): Rule {
 
       // Add to configuration and api routes on server.js
       const toAdd = 
-      `
+`
   new webpack.ProvidePlugin({
-    'window.$': 'jquery',
-    'window.jQuery': 'jquery'
+    "window.$": "jquery",
+    "window.jQuery": "jquery"
   }),
-      `;
+`;
 
       const appComponent = getFileContent(tree, filePath);
       tree.overwrite(filePath, appComponent.replace(`plugins: [`, `plugins: [` + toAdd));
