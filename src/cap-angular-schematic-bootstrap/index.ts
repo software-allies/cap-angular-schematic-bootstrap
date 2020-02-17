@@ -51,12 +51,10 @@ function addJqueryPluginToWebpackConfig(): Rule {
       
       const filePath = '/webpack.server.config.js';
       const buffer = tree.read(filePath);
-      if (buffer === null) {
-        console.log('webpack.server.config.js not exist.');
-      }
+      if (buffer !== null) {
 
-      // Add to configuration and api routes on server.js
-      const toAdd = 
+        // Add to configuration and api routes on server.js
+        const toAdd = 
 `
   new webpack.ProvidePlugin({
     "window.$": "jquery",
@@ -64,9 +62,11 @@ function addJqueryPluginToWebpackConfig(): Rule {
   }),
 `;
 
-      const appComponent = getFileContent(tree, filePath);
-      tree.overwrite(filePath, appComponent.replace(`plugins: [`, `plugins: [` + toAdd));
-
+        const appComponent = getFileContent(tree, filePath);
+        tree.overwrite(filePath, appComponent.replace(`plugins: [`, `plugins: [` + toAdd));
+      } else {
+        console.log('webpack.server.config.js not exist.');
+      }
     }
 }
 
@@ -76,7 +76,7 @@ export function schematicsBootstrap(options: BootstrapSchema): Rule {
       return chain([
         branchAndMerge(chain([
           addBootstrapToPackageJson(options),
-          addJqueryPluginToWebpackConfig(),
+          (!options.skipWebpackPlugin) ? addJqueryPluginToWebpackConfig() : noop(),
           addBootstrapCSS(),
           installNodeDeps(),
         ])),
