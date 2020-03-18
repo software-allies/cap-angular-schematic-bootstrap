@@ -2,7 +2,7 @@ import { Schema as BootstrapSchema } from './schema';
 import { Rule, Tree, chain, SchematicContext, branchAndMerge, noop } from '@angular-devkit/schematics';
 import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
 import { addPackageToPackageJson } from './../utils/package';
-import { addStyle, hasBootstrap } from './../utils/config';
+import { addStyle, hasBootstrap, addScript } from './../utils/config';
 import { FileSystemSchematicContext } from '@angular-devkit/schematics/tools';
 import { getFileContent } from '@schematics/angular/utility/test';
 // import {addModuleImportToRootModule} from './../utils/ast';
@@ -35,6 +35,13 @@ function addBootstrapToPackageJson(options: BootstrapSchema): Rule {
 function addBootstrapCSS(): Rule {
   return (host: Tree) => {
     addStyle(host, './node_modules/bootstrap/dist/css/bootstrap.css');
+    return host;
+  };
+}
+
+function addScripts(): Rule {
+  return (host: Tree) => {
+    addScript(host, './node_modules/bootstrap/dist/js/bootstrap.min.js');
     return host;
   };
 }
@@ -78,7 +85,8 @@ export function schematicsBootstrap(options: BootstrapSchema): Rule {
           addBootstrapToPackageJson(options),
           (!options.skipWebpackPlugin) ? addJqueryPluginToWebpackConfig() : noop(),
           addBootstrapCSS(),
-          installNodeDeps(),
+          addScripts(),
+          installNodeDeps()
         ])),
       ])(host, context);
     } else {

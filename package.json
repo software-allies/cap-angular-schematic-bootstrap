@@ -1,6 +1,6 @@
 {
   "name": "cap-angular-schematic-bootstrap",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Bootstrap integration schematic",
   "scripts": {
     "build": "tsc -p tsconfig.json",
@@ -17,6 +17,13 @@
     "name": "Software Allies",
     "url": "https://softwareallies.com"
   },
+  "contributors": [
+    {
+      "email": "cesar_alonso_m_g@hotmail.com",
+      "name": "César Alonso Magaña Gavilanes",
+      "url": "https://github.com/cesar-alonso-magana"
+    }
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
