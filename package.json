@@ -1,6 +1,6 @@
 {
   "name": "cap-angular-schematic-bootstrap",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Bootstrap integration schematic",
   "scripts": {
     "build": "tsc -p tsconfig.json",

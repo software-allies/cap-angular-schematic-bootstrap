@@ -26,6 +26,8 @@ const typesJquery = '3.3.29';
 
 function addBootstrapToPackageJson(options: BootstrapSchema): Rule {
   return (host: Tree) => {
+    addPackageToPackageJson(host, 'dependencies', 'jquery', `^3.3.1`);
+    addPackageToPackageJson(host, 'dependencies', 'popper.js', `^1.14.3`);
     addPackageToPackageJson(host, 'dependencies', 'bootstrap', `^${options.version}`);
     addPackageToPackageJson(host, 'devDependencies', '@types/jquery', `^${typesJquery}`);
     return host;
@@ -41,7 +43,8 @@ function addStyles(): Rule {
 
 function addScripts(): Rule {
   return (host: Tree) => {
-    addScript(host, './node_modules/jquery/dist/jquery.js');
+    addScript(host, './node_modules/jquery/dist/jquery.min.js');
+    addScript(host, './node_modules/popper.js/dist/umd/popper.min.js');
     addScript(host, './node_modules/bootstrap/dist/js/bootstrap.min.js');
     return host;
   };
