@@ -32,7 +32,7 @@ function addBootstrapToPackageJson(options: BootstrapSchema): Rule {
   };
 }
 
-function addBootstrapCSS(): Rule {
+function addStyles(): Rule {
   return (host: Tree) => {
     addStyle(host, './node_modules/bootstrap/dist/css/bootstrap.css');
     return host;
@@ -41,6 +41,7 @@ function addBootstrapCSS(): Rule {
 
 function addScripts(): Rule {
   return (host: Tree) => {
+    addScript(host, './node_modules/jquery/dist/jquery.js');
     addScript(host, './node_modules/bootstrap/dist/js/bootstrap.min.js');
     return host;
   };
@@ -84,7 +85,7 @@ export function schematicsBootstrap(options: BootstrapSchema): Rule {
         branchAndMerge(chain([
           addBootstrapToPackageJson(options),
           (!options.skipWebpackPlugin) ? addJqueryPluginToWebpackConfig() : noop(),
-          addBootstrapCSS(),
+          addStyles(),
           addScripts(),
           installNodeDeps()
         ])),
