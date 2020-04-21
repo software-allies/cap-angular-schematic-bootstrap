@@ -1,6 +1,6 @@
 {
   "name": "cap-angular-schematic-bootstrap",
-  "version": "0.0.10",
+  "version": "1.0.0",
   "description": "Bootstrap 4, Jquery and Pooper Integration Schematic",
   "scripts": {
     "build": "tsc -p tsconfig.json",
