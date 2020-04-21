@@ -8,13 +8,6 @@ import { getFileContent } from '@schematics/angular/utility/test';
 // import {addModuleImportToRootModule} from './../utils/ast';
 
 /*
-const ngBootstrapVersion = '2.0.0-alpha.0';
-function addNgBootstrapToPackageJson(): Rule {
-  return (host: Tree) => {
-    addPackageToPackageJson(host, 'dependencies', '@ng-bootstrap/ng-bootstrap', `^${ngBootstrapVersion}`);
-    return host;
-  };
-}*
 function addNgBootstrapModuleToAppModule(): Rule {
   return (host: Tree) => {
     addModuleImportToRootModule(host, 'NgbModule.forRoot()', '@ng-bootstrap/ng-bootstrap');
@@ -22,14 +15,19 @@ function addNgBootstrapModuleToAppModule(): Rule {
   };
 }*/
 
-const typesJquery = '3.3.29';
+const dependencyVersions = {
+  "bootstrap": "^4.4.1",
+  "jquery": "3.4.1",
+  "popper": "^1.16.1",
+  "typesJquery": "3.3.29"
+};
 
 function addBootstrapToPackageJson(options: BootstrapSchema): Rule {
   return (host: Tree) => {
-    addPackageToPackageJson(host, 'dependencies', 'jquery', `^3.3.1`);
-    addPackageToPackageJson(host, 'dependencies', 'popper.js', `^1.14.3`);
-    addPackageToPackageJson(host, 'dependencies', 'bootstrap', `^${options.version}`);
-    addPackageToPackageJson(host, 'devDependencies', '@types/jquery', `^${typesJquery}`);
+    addPackageToPackageJson(host, 'dependencies', 'jquery', `${options.jquery}`);
+    addPackageToPackageJson(host, 'dependencies', 'popper.js', `${options.popper}`);
+    addPackageToPackageJson(host, 'dependencies', 'bootstrap', `${options.bootstrap}`);
+    addPackageToPackageJson(host, 'devDependencies', '@types/jquery', `${options.typesJquery}`);
     return host;
   };
 }
@@ -82,6 +80,20 @@ function addJqueryPluginToWebpackConfig(): Rule {
 }
 
 export function schematicsBootstrap(options: BootstrapSchema): Rule {
+
+  if (!options.bootstrap) {
+      options.bootstrap = dependencyVersions.bootstrap;
+  }
+  if (!options.popper) {
+      options.popper = dependencyVersions.popper;
+  }
+  if (!options.jquery) {
+      options.jquery = dependencyVersions.jquery;
+  }
+  if (!options.typesJquery) {
+      options.typesJquery = dependencyVersions.typesJquery;
+  }
+
   return (host: Tree, context: FileSystemSchematicContext) => {
     if (!hasBootstrap(host)) {
       return chain([

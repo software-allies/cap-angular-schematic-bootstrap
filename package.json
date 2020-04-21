@@ -1,7 +1,7 @@
 {
   "name": "cap-angular-schematic-bootstrap",
-  "version": "0.0.9",
-  "description": "Bootstrap integration schematic",
+  "version": "0.0.10",
+  "description": "Bootstrap 4, Jquery and Pooper Integration Schematic",
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "test": "npm run build && jasmine src/**/*_spec.js",

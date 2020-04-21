@@ -26,6 +26,23 @@ The schematic will be configurated after you answer the following questions.
 ​
 The Schematic check if Bootstrap is not configured in angular.json styles, if not install the specified package and update the angular.json, also add types for jquery and a plug-in for use jquery.
 
+
+
+### Bootstrap 4, Jquery and Pooper Integration Schematic.
+
+```
+This Schematic Install by default the next versions: 
+
+    {
+        "bootstrap": "^4.4.1",
+        "jquery": "3.4.1",
+        "popper": "^1.16.1",
+        "typesJquery": "3.3.29"
+    }
+```
+
+
+
 Touched files:
 
 ```
@@ -43,7 +60,7 @@ angular 8
 [Schematic](https://www.schematics.com/)
 
 ## Version 
-0.0.7
+0.0.10
 
 ## Authors
 Software Allies - [Software Allies](https://github.com/software-allies)
